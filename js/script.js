@@ -61,6 +61,22 @@ async function getSongs(folder) {
       playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
     });
   });
+
+    //Add an event listener to previous
+    previous.addEventListener("click", () => {
+      let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+      if (index - 1 >= 0) {
+        playMusic(songs[index - 1]);
+      }
+    });
+  
+    //Add an event listener to next
+    next.addEventListener("click", () => {
+      let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+      if (index + 1 < songs.length) {
+        playMusic(songs[index + 1]);
+      }
+    });
 }
 
 const playMusic = (track, pause = false) => {
@@ -159,21 +175,7 @@ async function main() {
     document.querySelector(".left").style.left = "-100%";
   });
 
-  //Add an event listener to previous
-  previous.addEventListener("click", () => {
-    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
-    if (index - 1 >= 0) {
-      playMusic(songs[index - 1]);
-    }
-  });
 
-  //Add an event listener to next
-  next.addEventListener("click", () => {
-    let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
-    if (index + 1 < songs.length) {
-      playMusic(songs[index + 1]);
-    }
-  });
 
   // document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e) =>{
   //   currentSong.volume = parseInt(e.target.value) / 100
