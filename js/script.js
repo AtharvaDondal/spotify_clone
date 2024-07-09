@@ -190,6 +190,9 @@ async function main() {
       // Validate the volume value
       if (!isNaN(volumeValue) && volumeValue >= 0 && volumeValue <= 100) {
         currentSong.volume = volumeValue / 100;
+        if(currentSong.volume > 0){
+          document.querySelector(".volume > img").src = document.querySelector(".volume > img").src.replace("images/mute.svg", "images/volume.svg");
+        }
       } else {
         console.error("Invalid volume value:", volumeValue);
       }
@@ -197,7 +200,6 @@ async function main() {
 
   // Load the playlist whenever card is clicked
   Array.from(document.getElementsByClassName("card")).forEach((e) => {
-    console.log(e);
     e.addEventListener("click", async (item) => {
       songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`);
     });
@@ -205,7 +207,6 @@ async function main() {
 
   //Add an event listener to mute the track
   document.querySelector(".volume > img").addEventListener("click", (e) => {
-    console.log(e.target);
     if (e.target.src.includes("volume.svg")) {
       e.target.src = e.target.src.replace("images/volume.svg", "images/mute.svg");
       currentSong.volume = 0;

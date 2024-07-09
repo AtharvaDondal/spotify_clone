@@ -174,10 +174,10 @@ body {
 
 .play {
   position: absolute;
-  right: 17px;
-  top: 168px;
+  right: 19px;
   opacity: var(--a);
   transition: all 1s ease-out;
+  bottom: 92px;
 }
 
 .buttons>* {
@@ -221,6 +221,9 @@ body {
 }
 
 .playbar {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
   position: fixed;
   bottom: 10px;
   width: 66vw;
@@ -243,7 +246,7 @@ body {
 
 .songList {
   padding: 0 6px;
-  height: 544px;
+  height: 410px;
   overflow: auto;
   margin-bottom: 44px;
   /* margin: 44px 0; */
@@ -372,6 +375,12 @@ body {
     width: 333px;
     background-color: black;
     padding: 0;
+    height: 100vh;
+  }
+
+  .footer{
+    position: relative;
+    bottom: 0;
   }
 
   .timevol {
@@ -465,13 +474,32 @@ body {
     width: 84vw;
   }
 
+
 }
 
-@media (max-width: 663px) {
+@media (max-width: 662px) {
 
   .card {
     width: 84vw;
   }
+  .cardContainer{
+    max-height: unset;
+    overflow-y: unset;
+  }
+
+  .cardContainer{
+    margin-bottom: 30vh;
+  }
+
+  .library{
+    height: 85vh;
+  }
+
+  .left{
+    position: fixed;
+    top: 0;
+  }
+
 
 }
 
@@ -501,6 +529,11 @@ body {
   }
   .buttons{
     padding: 18px;
+  }
+}
+@media (max-width:700px) {
+  .playbar{
+    right: 25px;
   }
 }
 
